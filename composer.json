@@ -1,5 +1,6 @@
 {
     "name": "krai500/yii2-relcopy",
+    "type": "yii2-extension",
     "authors": [
         {
             "name": "Kraisorn Thongsuk",
