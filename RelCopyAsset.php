@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace caplet\assets;
+namespace krai500\relcopy;
 
 use yii\web\AssetBundle;
 /**
@@ -16,11 +16,18 @@ use yii\web\AssetBundle;
  */
 class RelCopyAsset extends AssetBundle
 {
-	public $basePath = '@webroot';
-    public $baseUrl = '@web/../themes/caplet/assets';
-   
-    public $js = [
-		'js/relCopy.jquery.js',
-      
+	public $js = [
+		'relCopy.jquery.js',      
     ];
+	
+	public $depends = [
+		'yii\web\YiiAsset',
+		'yii\bootstrap\BootstrapAsset',
+	];
+	
+	public function init()
+	{
+		$this->sourcePath = __DIR__ . '/assets';
+		parent::init();
+	}
 }
