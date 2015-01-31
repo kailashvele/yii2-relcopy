@@ -1,0 +1,10 @@
+{
+    "name": "krai500/yii2-relcopy",
+    "authors": [
+        {
+            "name": "Kraisorn Thongsuk",
+            "email": "krai500@hotmail.com"
+        }
+    ],
+    "require": {}
+}
