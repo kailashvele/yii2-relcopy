@@ -16,7 +16,9 @@
  * @param: string	append - HTML to attach at the end of each copy. Default: remove link
  * @param: string	copyClass - A class to attach to each copy
  * @param: boolean	clearInputs - Option to clear each copies text input fields or textarea
- *
+ * @param: boolean	before - Option to add new cloned div at top. Default is false
+ * @param: boolean	after - Option to add new cloned div at bottom. Default: true
+ * @param: string	selectize - Option to detect the selectize in the div which is to be cloned. It should be the class name by which the selectize was initialised
  */
 
 (function($) {
@@ -29,6 +31,8 @@
 			append: '',
 			clearInputs: true,
 			selectize: '',
+			before: false,
+			after: true,
 			limit: 0 // 0 = unlimited
 		}, options);
 
@@ -48,10 +52,10 @@
 				};
 
 				var master = $(rel+":first");
-				if(settings.selectize){
+				if(settings.selectize){  //checking if selectize is set
 					master.find(settings.selectize).each(function(){
-						if (this.selectize) {
-							this.selectize.destroy();
+						if (this[0].selectize) { //if this has selectize
+							this[0].selectize.destroy(); // then destroy the selectize the "this[0]" is used to address the original selectize which will prevent from creating conflict of already selected options
 						}
 					});
 				}
@@ -99,18 +103,22 @@
 								$(this).val("");
 						}
 					});
-
-					if(settings.selectize){
-						master.find(settings.selectize).each(function(){
-							$(this).selectize({create: false});
-						});
-						$(clone).find(settings.selectize).each(function(){
-							$(this).selectize({create: false});
-						});
-					}
 				};
 
-				$(parent).find(rel+':last').after(clone);
+				if(settings.selectize){
+					master.find(settings.selectize).each(function(){
+						$(this)[0].selectize({create: false}); //reinitialising the selectize of the "this[0]" original selectize
+					});
+					$(clone).find(settings.selectize).each(function(){
+						$(this).selectize({create: false}); //applying selectize to new elements
+					});
+				}
+
+				if(settings.before){
+					$(parent).find(rel+':first').before(clone); //if the before is set the cloned divs will be added at top
+				}else{
+					$(parent).find(rel+':last').after(clone); // else the after is set by default so the cloned divs will be added at the bottom
+				}
 
 				return false;
 

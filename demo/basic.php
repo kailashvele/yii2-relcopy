@@ -78,11 +78,17 @@
 		});
 
 
-		var removeLink = '<a style="position: absolute;margin-top: 0px;right: 0px;color: #a94442;font-size: 1.8em;z-index: 100" class="remove" href="" ><span class="fa fa-times-circle"></span></a>';
+		var removeLink = '<span style="position: absolute;margin-top: 0px;right: 0px;color: #a94442;font-size: 1.8em;z-index: 100" class="removeclone" ><span class="fa fa-times-circle"></span></span>';
 	       $('.addnew').relCopy({
-	           append: removeLink,
-	           selectize: '.selectizenormal'
+	           append: removeLink
 	       });
+
+	     $('.container').on('click','.removeclone',function(e){
+	     	console.log(e);
+	     	$(this).parent().slideUp(function(){
+	     		$(this).remove();
+	     	})
+	     });
 	})();
 
 	</script>
