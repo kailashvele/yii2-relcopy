@@ -47,6 +47,23 @@
 	           </div>
 	           <div class="col-md-6">
 	               <div class="form-group">
+	                   <label>Label 1</label>
+	                   <input type="text" name="label1" id="label1" class="form-control element-width-3" placeholder="" title="" value="" autocomplete="off">
+	               </div>
+	           </div>
+	           <div class="col-md-6">
+	               <div class="form-group">
+	                   <label>Label 2</label>
+						<select name="label2" class="selectizenormal" id="label2">
+							<option value=""></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div>
+	           </div>
+	           <div class="col-md-6">
+	               <div class="form-group">
 	                   <label>Label 3</label>
 	                   <input type="text" name="label3" id="label3" class="form-control element-width-3" placeholder="" title="" value="" autocomplete="off">
 	               </div>
